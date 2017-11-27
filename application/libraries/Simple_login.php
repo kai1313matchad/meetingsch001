@@ -25,7 +25,7 @@
 				$this->CI->session->set_userdata('login_id', uniqid(rand()));
 				$this->CI->session->set_userdata('kar_id', $id_kry);
 				$this->CI->session->set_userdata('identifier', $identifier);				
-				$msres = $this->CI->db->get_where('user_ms', array('kar_id'=>$id_kry));
+				$msres = $this->CI->db->get_where('user_ms', array('kar_id'=>$id_kry, 'usr_dtsts'=>'1'));
 				if($msres->num_rows() > 0)
 				{
 					$this->CI->session->set_userdata('akses_post', '1');

@@ -8,11 +8,17 @@
             <div class="row">
                 <div class="col-sm-3 col-xs-3">
                     <a href="javascript:void(0)" onclick="addusg_open()" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Tambah Team</a>
-                </div>
+                </div>                
                 <div class="col-sm-3 col-xs-3">
                     <a href="javascript:void(0)" onclick="addusr_open()" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Tambah User</a>
                 </div>
-            </div><br>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-xs-3">
+                    <a href="javascript:void(0)" onclick="delusg_open()" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus Team</a>
+                </div>
+            </div>
+            <br>
             <div class="row" id="tambah_usg">
                 <div class="col-sm-6 col-xs-6 col-sm-offset-3 col-xs-offset-3">
                     <div class="panel panel-default">
@@ -25,7 +31,35 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Nama Team</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="nama_group">                                            
+                                            <input type="text" class="form-control" name="nama_group">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-2 col-sm-offset-3">
+                                            <a href="javascript:void(0)" onclick="save_usg()" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Simpan</a>
+                                        </div>
+                                        <div class="box col-sm-7">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>            
+            </div>
+            <div class="row" id="hapus_usg">
+                <div class="col-sm-6 col-xs-6 col-sm-offset-3 col-xs-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <h4>Hapus Team</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-12 col-xs-12">
+                                <form class="form-horizontal" id="form_usergroup">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Nama Team</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="nama_group">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -171,6 +205,7 @@
             dt_karyawan("<?php echo site_url('Searchdata/search_user')?>");
             $('#tambah_usg').css({'display':'none'});
             $('#tambah_usr').css({'display':'none'});
+            $('#hapus_usg').css({'display':'none'});
         });
 
         function addusg_open()
@@ -196,7 +231,20 @@
             {
                 $('#tambah_usr').css({'display':'none'});
             }
-        }        
+        }
+
+        function delusg_open()
+        {
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","usergroup","USG_ID","USG_NAME");
+            if(!$('#hapus_usg').is(':visible'))
+            {
+                $('#hapus_usg').css({'display':'block'});
+            }
+            else
+            {
+                $('#hapus_usg').css({'display':'none'});
+            }
+        } 
 
         function search_user()
         {
@@ -247,9 +295,15 @@
             });
         }
 
+        function del_user()
+        {
+
+        }
+
         function save_usg()
         {
-            save_data("<?php echo site_url('Crud/add_usergroup')?>","#form_usergroup");            
+            save_data("<?php echo site_url('Crud/add_usergroup')?>","#form_usergroup");
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","usergroup","USG_ID","USG_NAME");
         }
 
         function save_usr()

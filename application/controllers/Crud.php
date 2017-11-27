@@ -22,6 +22,19 @@
 	        echo json_encode(array("status" => TRUE));
 		}
 
+		public function update_user()
+		{
+			$this->_validate_user();
+	        $table = 'user_ms';
+	        $data = array(
+	        		'usg_id' => $this->input->post('divisi'),
+	                'kar_id' => $this->input->post('id_karyawan'),
+	                'usr_access' => $this->input->post('akses')
+	            );
+	        $update = $this->crud->update($table,$data,array('usr_id'=>$this->input->post('id_user')));
+	        echo json_encode(array("status" => TRUE));
+		}
+
 		public function _validate_user()
 		{
 			$data = array();
@@ -716,7 +729,7 @@
 
 		public function get_user($id)
 		{
-			$data = $this->crud->get_by_id('user_ms',array('usr_id'=>$id));
+			$data = $this->crud->get_by_id2('user_ms','karyawan ',array('user_ms.usr_id'=>$id),'karyawan.id_karyawan = user_ms.kar_id');
 			echo json_encode($data);
 		}
 

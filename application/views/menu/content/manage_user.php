@@ -259,6 +259,8 @@
             {
                 update_data("<?php echo site_url('Crud/update_user')?>","#form_user");
                 $('[name="formstatus"]').val('');
+                $('#form_user')[0].reset();
+                addusr_open();
             }
             else
             {

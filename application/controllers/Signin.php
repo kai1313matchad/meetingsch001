@@ -25,5 +25,12 @@
 			}			
 			echo json_encode($data);
 		}
+
+		public function logout()
+		{
+			$this->simple_login->logout();
+			$data['status'] = TRUE;
+			echo json_encode($data);
+		}
 	}
 ?>

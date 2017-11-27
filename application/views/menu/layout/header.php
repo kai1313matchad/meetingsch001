@@ -25,9 +25,9 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-left">
-                            <li style="float: left;">
-                                <a href="<?php echo base_url('Dashboard')?>">
-                                    <i class="glyphicon glyphicon-arrow-left"></i> Halaman Reminder
+                            <li>
+                                <a href="javascript:void(0)" onclick="back_()">
+                                    <i class="glyphicon glyphicon-home"></i> Halaman Reminder
                                 </a>
                             </li>
                         </ul>

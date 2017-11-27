@@ -222,6 +222,25 @@
             });
         }
 
+        function pick_user(id)
+        {
+            $.ajax({
+                url : "<?php echo site_url('Crud/get_user/')?>" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {   
+                    $('[name="id_karyawan"]').val(data.KRY_ID);
+                    $('[name="nama_kry"]').val(data.nama_karyawan);
+                    $('#tambah_usr').css({'display':'block'});
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+        }
+
         function save_usg()
         {
             save_data("<?php echo site_url('Crud/add_usergroup')?>","#form_usergroup");            

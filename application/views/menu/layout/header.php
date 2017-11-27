@@ -24,6 +24,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-left">
+                            <li style="float: left;">
+                                <a href="<?php echo base_url('Dashboard')?>">
+                                    <i class="glyphicon glyphicon-arrow-left"></i> Halaman Reminder
+                                </a>
+                            </li>
+                        </ul>
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li>
                                 <a <?php if($menu == 'dashboard'){echo 'class="menu-top-active"';}?> href="<?php echo base_url('Dashboard')?>">

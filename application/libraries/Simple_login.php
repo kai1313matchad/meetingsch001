@@ -92,13 +92,6 @@
 			$this->CI->session->set_flashdata('success', '<div class="col-lg-12"><div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button><strong>Anda berhasil logout</strong></div></div>');
 			redirect(base_url('Dashboard/login'));
 		}
-
-		public function logoutadm()
-		{
-			$this->sessionadmdel();
-			$this->CI->session->set_flashdata('success', '<div class="col-lg-12"><div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button><strong>Anda berhasil logout</strong></div></div>');
-			redirect(base_url('Administrator'));
-		}
 	}
 
 ?>

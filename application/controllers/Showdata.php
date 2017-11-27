@@ -35,7 +35,7 @@
 					$akses = 'Secretary';
 				}
 				$row[] = $akses;
-				$row[] = '<a href="javascript:void(0)" title="Lihat Data" class="btn btn-sm btn-info btn-responsive" onclick="pick_user('."'".$dat->USR_ID."'".')"><span class="glyphicon glyphicon-export"></span> </a>';
+				$row[] = '<a href="javascript:void(0)" title="Lihat Data" class="btn btn-sm btn-info btn-responsive" onclick="pick_user('."'".$dat->USR_ID."'".')"><span class="glyphicon glyphicon-export"></span> </a> <a href="javascript:void(0)" title="Lihat Data" class="btn btn-sm btn-danger btn-responsive" onclick="del_user('."'".$dat->USR_ID."'".')"><span class="glyphicon glyphicon-trash"></span> </a>';
 				$data[] = $row;
 			}
 			$output = array(

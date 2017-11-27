@@ -7,7 +7,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 col-xs-3">
-                    <a href="javascript:void(0)" onclick="addusg_open()" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Tambah Divisi</a>
+                    <a href="javascript:void(0)" onclick="addusg_open()" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Tambah Team</a>
                 </div>
                 <div class="col-sm-3 col-xs-3">
                     <a href="javascript:void(0)" onclick="addusr_open()" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Tambah User</a>
@@ -17,13 +17,13 @@
                 <div class="col-sm-6 col-xs-6 col-sm-offset-3 col-xs-offset-3">
                     <div class="panel panel-default">
                         <div class="panel-heading text-center">
-                            <h4>Tambah Divisi</h4>
+                            <h4>Tambah Team</h4>
                         </div>
                         <div class="panel-body">
                             <div class="col-sm-12 col-xs-12">
                                 <form class="form-horizontal" id="form_usergroup">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Nama Divisi</label>
+                                        <label class="col-sm-3 control-label">Nama Team</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="nama_group">                                            
                                         </div>
@@ -51,7 +51,7 @@
                             <div class="col-sm-12 col-xs-12">
                                 <form class="form-horizontal" id="form_user">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Divisi</label>
+                                        <label class="col-sm-3 control-label">Team</label>
                                         <div class="col-sm-8">
                                             <select class="form-control" name="divisi" id="usergroup">
                                             </select>
@@ -99,7 +99,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th class="text-center">Divisi</th>
+                                <th class="text-center">Nama Team</th>
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">Jabatan</th>
                                 <th class="text-center">Hak Akses</th>

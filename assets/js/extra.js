@@ -233,6 +233,56 @@ function update_data(url,form)
     });
 }
 
+function delete_data(url,form)
+{
+    $('#btnDel').text('Menghapus...');
+    $('#btnDel').attr('disabled',true);
+    $('.box').jmspinner('large');
+    if(confirm('Anda yakin menghapus data ini?'))
+    {            
+        $.ajax({
+            url : url,
+            type: "POST",
+            data: $(form).serialize(),
+            dataType: "JSON",
+            success: function(data)
+            {                    
+                alert('Data Berhasil Dihapus');
+                $('#btnDel').text('Hapus');
+                $('#btnDel').attr('disabled',false);
+                $('.box').jmspinner(false);
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error deleting data');
+                $('#btnDel').text('Hapus');
+                $('#btnDel').attr('disabled',false);
+                $('.box').jmspinner(false);
+            }
+        });
+    }
+}
+
+function delete_data2(url)
+{
+    if(confirm('Anda yakin menghapus data ini?'))
+    {            
+        $.ajax({
+            url : url,
+            type: "POST",
+            dataType: "JSON",
+            success: function(data)
+            {                    
+                alert('Data Berhasil Dihapus');
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error deleting data');
+            }
+        });
+    }
+}
+
 //Dropdown
 function dropdown(url,drop,value,text)
 {

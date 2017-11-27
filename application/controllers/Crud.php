@@ -35,6 +35,16 @@
 	        echo json_encode(array("status" => TRUE));
 		}
 
+		public function del_user($id)
+		{
+			$table = 'user_ms';
+			$data = array(
+					'usr_dtsts' => '0'
+				);
+			$update = $this->crud->update($table,$data,array('usr_id'=>$id));
+			echo json_encode(array("status" => TRUE));
+		}
+
 		public function _validate_user()
 		{
 			$data = array();
@@ -72,10 +82,21 @@
 			$this->_validate_usergroup();
 	        $table = 'user_group';
 	        $data = array(	                
-	                'usg_name' => $this->input->post('nama_group')
+	                'usg_name' => $this->input->post('nama_group'),
+	                'usg_dtsts' => '1'
 	            );
 	        $insert = $this->crud->save($table,$data);
 	        echo json_encode(array("status" => TRUE));
+		}
+
+		public function del_usergroup()
+		{
+			$table = 'user_group';
+			$data = array(
+					'usg_dtsts' => '0'
+				);
+			$update = $this->crud->update($table,$data,array('usg_id'=>$this->input->post('hapus_divisi')));
+			echo json_encode(array("status" => TRUE));
 		}
 
 		public function _validate_usergroup()
@@ -682,8 +703,8 @@
 
 		//dropdown
 		public function drop_usergroup()
-		{
-			$que = $this->db->get('user_group');
+		{			
+			$que = $this->db->get_where('user_group','usg_dtsts = "1"');
 			$data = $que->result();
 			echo json_encode($data);
 		}

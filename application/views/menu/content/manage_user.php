@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-2 col-sm-offset-3">
-                                            <a href="javascript:void(0)" onclick="save_usg()" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Simpan</a>
+                                            <a href="javascript:void(0)" onclick="save_usg()" class="btn btn-sm btn-primary" id="btnSave">Simpan</a>
                                         </div>
                                         <div class="box col-sm-7">
                                         </div>
@@ -55,16 +55,17 @@
                         </div>
                         <div class="panel-body">
                             <div class="col-sm-12 col-xs-12">
-                                <form class="form-horizontal" id="form_usergroup">
+                                <form class="form-horizontal" id="form_hapususg">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Nama Team</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="nama_group">
+                                            <select class="form-control" name="hapus_divisi" id="delusg">
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-2 col-sm-offset-3">
-                                            <a href="javascript:void(0)" onclick="save_usg()" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Simpan</a>
+                                            <a href="javascript:void(0)" onclick="del_usg()" class="btn btn-sm btn-danger" id="btnDel">Hapus</a>
                                         </div>
                                         <div class="box col-sm-7">
                                         </div>
@@ -116,7 +117,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-2 col-sm-offset-3">
-                                            <a href="javascript:void(0)" onclick="save_usr()" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Simpan</a>
+                                            <a href="javascript:void(0)" onclick="save_usr()" class="btn btn-sm btn-primary" id="btnSave">Simpan</a>
                                         </div>
                                         <div class="box col-sm-7">
                                         </div>
@@ -235,7 +236,7 @@
 
         function delusg_open()
         {
-            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","usergroup","USG_ID","USG_NAME");
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","delusg","USG_ID","USG_NAME");
             if(!$('#hapus_usg').is(':visible'))
             {
                 $('#hapus_usg').css({'display':'block'});
@@ -295,15 +296,18 @@
             });
         }
 
-        function del_user()
-        {
-
+        function del_usg()
+        {            
+            delete_data('<?php echo site_url('Crud/del_usergroup/')?>','#form_hapususg');
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","usergroup","USG_ID","USG_NAME");
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","delusg","USG_ID","USG_NAME");
         }
 
         function save_usg()
         {
             save_data("<?php echo site_url('Crud/add_usergroup')?>","#form_usergroup");
             dropdown("<?php echo site_url('Crud/drop_usergroup')?>","usergroup","USG_ID","USG_NAME");
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","delusg","USG_ID","USG_NAME");
         }
 
         function save_usr()
@@ -315,11 +319,20 @@
                 $('[name="formstatus"]').val('');
                 $('#form_user')[0].reset();
                 addusr_open();
+                addusg_open();
+                delusg_open();
             }
             else
             {
                 save_data("<?php echo site_url('Crud/add_user')?>","#form_user");
             }            
+            dt_user("<?php echo site_url('Showdata/show_user')?>");
+        }
+
+        function del_user(id)
+        {
+            var url = '<?php echo site_url('Crud/del_user/')?>'+id;
+            delete_data2(url);
             dt_user("<?php echo site_url('Showdata/show_user')?>");
         }
     </script>

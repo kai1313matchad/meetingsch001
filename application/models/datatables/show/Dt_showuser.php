@@ -16,7 +16,7 @@
 			$this->db->from($this->table);
 			$this->db->join('karyawan','karyawan.id_karyawan = user_ms.kar_id');
 			$this->db->join('user_group','user_group.usg_id = user_ms.usg_id');
-			$this->db->where('status','Aktif');
+			$this->db->where(array('status'=>'Aktif', 'usr_dtsts'=>'1'));			
 			$i = 0;
 			foreach ($this->column_search as $item)
 			{

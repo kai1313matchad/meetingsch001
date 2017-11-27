@@ -16,7 +16,7 @@
 			$this->CI->session->set_userdata('identifier', '');
 			$this->CI->session->set_userdata('akses_post', '');
 			$this->CI->session->set_userdata('akses_admin', '');
-			$query = $this->CI->db->get_where('karyawan', array('username'=>$username, 'password'=>$password));
+			$query = $this->CI->db->get_where('karyawan', array('username'=>$username, 'password'=>$password, 'status'=>'Aktif'));
 			if($query->num_rows() > 0)
 			{
 				$row = $this->CI->db->get_where('karyawan', array('username'=>$username, 'password'=>$password));

@@ -63,6 +63,7 @@
                                             <input type="text" class="form-control" name="nama_kry" readonly>
                                             <input type="hidden" name="id_karyawan">
                                             <input type="hidden" name="id_user">
+                                            <input type="hidden" name="formstatus">
                                         </div>
                                         <div class="col-sm-2">
                                             <a href="javascript:void(0)" onclick="search_user()" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-search"></span> Cari</a>
@@ -71,7 +72,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Hak Akses</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control" name="akses">
+                                            <select class="form-control" name="akses" id="userakses">
                                                 <option value="">Pilih</option>
                                                 <option value="0">Administrator</option>
                                                 <option value="1">Head</option>
@@ -224,14 +225,19 @@
 
         function pick_user(id)
         {
+            dropdown("<?php echo site_url('Crud/drop_usergroup')?>","usergroup","USG_ID","USG_NAME");
             $.ajax({
                 url : "<?php echo site_url('Crud/get_user/')?>" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data)
                 {   
-                    $('[name="id_karyawan"]').val(data.KRY_ID);
+                    $('[name="id_user"]').val(data.USR_ID);
+                    $('[name="id_karyawan"]').val(data.KAR_ID);
+                    $('#usergroup option[value="' + data.USG_ID + '"]').prop('selected',true);
+                    $('#userakses option[value="' + data.USR_ACCESS + '"]').prop('selected',true);
                     $('[name="nama_kry"]').val(data.nama_karyawan);
+                    $('[name="formstatus"]').val('update');
                     $('#tambah_usr').css({'display':'block'});
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -248,7 +254,16 @@
 
         function save_usr()
         {
-            save_data("<?php echo site_url('Crud/add_user')?>","#form_user");
+            var sts = $('[name="formstatus"]').val();
+            if (sts == 'update') 
+            {
+                update_data("<?php echo site_url('Crud/update_user')?>","#form_user");
+                $('[name="formstatus"]').val('');
+            }
+            else
+            {
+                save_data("<?php echo site_url('Crud/add_user')?>","#form_user");
+            }            
             dt_user("<?php echo site_url('Showdata/show_user')?>");
         }
     </script>

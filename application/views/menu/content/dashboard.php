@@ -10,8 +10,8 @@
                     if($this->session->flashdata('success'))
                     {
                         echo $this->session->flashdata('success');
-                    }
-                ?>            
+                    }                    
+                ?>
             </div>
 			<div class="row">
 				<div id="calendar" class="col-sm-8 col-sm-offset-2">

@@ -30,7 +30,7 @@
 				{
 					$this->CI->session->set_userdata('akses_post', '1');
 				}
-				$admres = $this->CI->db->join('user_group b','b.usg_id = a.usg_id')->get_where('user_ms a', array('a.kar_id'=>$id_kry, 'b.usg_name'=>'Administrator'));
+				$admres = $this->CI->db->join('user_group b','b.usg_id = a.usg_id')->get_where('user_ms a', array('a.kar_id'=>$id_kry, 'b.usg_name'=>'Administrator', 'usr_dtsts'=>'1'));
 				if($admres->num_rows() > 0)
 				{
 					$this->CI->session->set_userdata('akses_admin', '1');
@@ -48,7 +48,7 @@
 		//Fungsi Cek Login dari e-match
 		public function ematchlog()
 		{
-			if($this->CI->session->userdata('identifier' != 'ematch') || $this->CI->session->userdata('login_id') == '')
+			if($this->CI->session->userdata('identifier') != 'ematch' || $this->CI->session->userdata('login_id') == '')
 			{
 				$data['status'] = FALSE;
 				$this->sessiondel();

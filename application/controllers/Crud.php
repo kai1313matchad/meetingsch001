@@ -16,7 +16,8 @@
 	        $data = array(
 	        		'usg_id' => $this->input->post('divisi'),
 	                'kar_id' => $this->input->post('id_karyawan'),
-	                'usr_access' => $this->input->post('akses')
+	                'usr_access' => $this->input->post('akses'),
+	                'usr_dtsts' => '1'
 	            );
 	        $insert = $this->crud->save($table,$data);
 	        echo json_encode(array("status" => TRUE));

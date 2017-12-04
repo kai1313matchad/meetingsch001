@@ -5,7 +5,7 @@
 
 		var $table = 'user_ms';
 		var $column_order = array(null,'usg_name','nama_karyawan','jabatannya','usr_access');
-		var $column_search = array('usg_name','nama_karyawan','nama_akses','jabatannya');
+		var $column_search = array('usg_name','nama_karyawan','jabatannya','usr_access');
 		var $order = array('nama_karyawan' => 'desc');
 		public function __construct()
 		{
@@ -14,7 +14,7 @@
 		private function _get_datatables_query()
 		{		
 			$this->db->from($this->table);
-			$this->db->join('karyawan','karyawan.id_karyawan = user_ms.kar_id');
+			$this->db->join('karyawan','karyawan.id_karyawan = user_ms.kar_id');			
 			$this->db->join('user_group','user_group.usg_id = user_ms.usg_id');
 			$this->db->where(array('status'=>'Aktif', 'usr_dtsts'=>'1'));			
 			$i = 0;

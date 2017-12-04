@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-am-12">
-                    &copy; 2017 Match Advertising | By : IT Team | Theme : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                    &copy; 2017 Match Advertising | By : IT Team
                 </div>
             </div>
         </div>

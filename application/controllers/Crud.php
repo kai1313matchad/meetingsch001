@@ -170,7 +170,7 @@
 			$anggota = implode(', ', $member);
 			$departemen = implode(', ', $dept_terkait);
 			$this->email_conf();
-			$from = 'kaishasatrio@match-advertising.com';
+			$from = 'systemmatch@match-advertising.com';
 			$to = $dest;
 			$subj = 'Pemberitahuan Meeting';
 			$content = 'Dear Team <br> Diberitahukan bahwa akan diadakan Meeting sebagai berikut<br>
@@ -268,7 +268,7 @@
 			$anggota = implode(', ', $member);
 			$departemen = implode(', ', $dept_terkait);
 			$this->email_conf();
-			$from = 'kaishasatrio@match-advertising.com';
+			$from = 'systemmatch@match-advertising.com';
 			$to = $dest;
 			$subj = 'Pemberitahuan Penjadwalan Ulang Meeting';
 			$content = 'Dear Team <br> Diberitahukan bahwa akan diadakan Meeting sebagai berikut<br>
@@ -348,7 +348,7 @@
 			$anggota = implode(', ', $member);
 			$departemen = implode(', ', $dept_terkait);
 			$this->email_conf();
-			$from = 'kaishasatrio@match-advertising.com';
+			$from = 'systemmatch@match-advertising.com';
 			$to = $dest;
 			$subj = 'Pemberitahuan Pembatalan Meeting';
 			$content = 'Dear Team <br> Diberitahukan bahwa Meeting sebagai berikut<br>
@@ -434,7 +434,7 @@
 			}
 			$dest = implode(', ', $email);
 			$this->email_conf();
-			$from = 'kaishasatrio@match-advertising.com';
+			$from = 'systemmatch@match-advertising.com';
 			$to = $dest;
 			$subj = 'Hasil Meeting - Notulen';
 			$content = 'Dear Team <br> Berikut ini adalah hasil notulen dari meeting 
@@ -507,7 +507,7 @@
 			$anggota = implode(', ', $memlist);
 			$departemen = implode(', ', $dept_terkait);
 			$this->email_conf();
-			$from = 'kaishasatrio@match-advertising.com';
+			$from = 'systemmatch@match-advertising.com';
 			$to = $dest;
 			$subj = 'Reminder Meeting';
 			$content = 'Dear Team <br> Berikut ini adalah Reminder dari meeting 
@@ -579,7 +579,7 @@
 			$anggota = implode(', ', $memlist);
 			$departemen = implode(', ', $dept_terkait);
 			$this->email_conf();
-			$from = 'kaishasatrio@match-advertising.com';
+			$from = 'systemmatch@match-advertising.com';
 			$to = $dest;
 			$subj = 'Hasil Meeting';
 			$content = 'Dear Team <br> Berikut ini adalah Hasil dari meeting 
@@ -727,7 +727,7 @@
 				$res = $que->row();
 				$dpt[] = $res->id_dept;
 			}
-			$check = implode('', $dpt);
+			$check = implode('|', $dpt);
 			$data = $this->crud->get_krybydept($check);
 			echo json_encode($data);
 		}
@@ -810,8 +810,8 @@
 					'protocol'  => 'smtp',			    
 				    'smtp_host' => 'ssl://smtp.gmail.com',
 				    'smtp_port' => 465,
-				    'smtp_user' => 'kaishasatrio@match-advertising.com',
-				    'smtp_pass' => '3m41lk3rj4?',
+				    'smtp_user' => 'systemmatch@match-advertising.com',
+				    'smtp_pass' => 'Rahasia2017',
 				    'mailtype'  => 'html',
 				    'charset'   => 'utf-8'
 				);

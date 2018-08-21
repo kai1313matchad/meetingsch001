@@ -74,9 +74,11 @@
 	    	$this->db->select('*');
 			$this->db->from('karyawan a');
 			$this->db->join('dept b','FIND_IN_SET(b.id_dept, a.dept)');
-			$this->db->where('a.dept REGEXP "['.$deli.']"');
-			$this->db->where('a.status','Aktif');
+			$this->db->where('CONCAT(",", a.dept, ",") REGEXP "('.$deli.')"');
+			$this->db->where('a.status !=','Blokir');
+// 			$this->db->or_where('a.status','Cuti');
 			$this->db->not_like('a.nama_karyawan','admin');
+// 			$this->db->or_not_like('a.nama_karyawan','ADMIN');
 			$this->db->group_by('a.id_karyawan');
 			$query = $this->db->get();
 			return $query->result();

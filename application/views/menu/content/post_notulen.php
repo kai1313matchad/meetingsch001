@@ -87,13 +87,16 @@
                                 <div id="ntln">
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <textarea id="notulen" name="sch_notulen" class="form-control" rows="30"></textarea>
+                                            <textarea id="sch_notulen" name="sch_notulen" class="form-control" rows="30"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-2">
                                         <a href="javascript:void(0)" onclick="save()" id="btnSave" class="btn btn-sm btn-primary">Simpan</a>
+                                    </div>
+                                    <div class="col-sm-offset-1 col-sm-2">
+                                        <a href="javascript:void(0)" onclick="save2()" id="btnSave2" class="btn btn-sm btn-primary">Simpan Sebagai Daft</a>
                                     </div>
                                     <div class="box col-sm-7">
                                     </div>
@@ -169,7 +172,7 @@
     <script>
         $(document).ready(function() 
         {
-            CKEDITOR.replace('notulen',{
+            CKEDITOR.replace('sch_notulen',{
                 customConfig: 'config.js'
             });            
             $('#ntln').css({'display':'none'});
@@ -220,6 +223,7 @@
                     $('[name="sch_time"]').val(a);
                     $('[name="sch_info"]').val(data.SCH_INFO);
                     $('[name="sch_loc"]').val(data.SCH_LOC);
+                    $('[name="sch_notulen"]').val(data.SCH_NOTULEN);
                     pick_deptlist(id);
                     pick_memlist(id);
                     pick_team(data.USR_ID);
@@ -296,6 +300,15 @@
                 CKEDITOR.instances[instance].updateElement();
             }
             update_data('<?php echo base_url('Crud/add_notulen')?>','#schnotulen_form');
+        }
+
+        function save2()
+        {   
+            for (instance in CKEDITOR.instances) 
+            {
+                CKEDITOR.instances[instance].updateElement();
+            }
+            update_data('<?php echo base_url('Crud/add_notulen2')?>','#schnotulen_form');
         }        
     </script>
 </body>

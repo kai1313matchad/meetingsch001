@@ -482,6 +482,38 @@
 			echo json_encode(array("status"=>TRUE));
 		}
 
+		public function add_notulen2()
+		{
+			$data = array();
+	        $data['error_string'] = array();
+	        $data['inputerror'] = array();
+	        $data['status'] = TRUE;
+	        if($this->input->post('sch_id') == '')
+	        {
+	            $data['inputerror'][] = 'sch_title';
+	            $data['status'] = FALSE;
+	        }
+	        if($this->input->post('sch_notulen') == '')
+	        {
+	            $data['inputerror'][] = 'edit_notulen';
+	            $data['status'] = FALSE;
+	        }
+	        if($data['status'] === FALSE)
+	        {
+	            echo json_encode($data);
+	            exit();
+	        }
+			$id = $this->input->post('sch_id');
+			$table = 'schedule';
+			$data2 = array(
+					'sch_notulen' => $this->input->post('sch_notulen'),
+					'sch_sts' => '1'
+				);			
+			$update = $this->crud->update($table,$data2,array('sch_id'=>$id));
+			$member = $this->crud->get_by_idres('member_schedule',array('sch_id'=>$id));			
+			echo json_encode(array("status"=>TRUE));
+		}
+
 		public function schedule_reminder($id)
 		{
 			$sche = $this->crud->get_by_id('schedule',array('sch_id'=>$id));

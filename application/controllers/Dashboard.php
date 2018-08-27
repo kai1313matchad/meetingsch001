@@ -10,7 +10,7 @@
 
 		public function index()
 		{
-			// $this->simple_login->ematchlog();
+			//$this->simple_login->ematchlog();
 			$data['title']='Meeting Scheduler - Halaman Utama';			
 			$data['menu']='dashboard';			
 			$data['content']='menu/content/dashboard';

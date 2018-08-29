@@ -87,7 +87,7 @@
                                 <div id="ntln">
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <textarea id="sch_notulen" name="sch_notulen" class="form-control" rows="30"></textarea>
+                                            <textarea id="notulen" name="sch_notulen" class="form-control" rows="30"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@
     <script>
         $(document).ready(function() 
         {
-            CKEDITOR.replace('sch_notulen',{
+            CKEDITOR.replace('notulen',{
                 customConfig: 'config.js'
             });            
             $('#ntln').css({'display':'none'});
@@ -182,7 +182,7 @@
              });
             $('.dtm').datetimepicker({                
                   format: 'HH:mm'
-             });
+             }); 
         });
 
         function srch_sch()
@@ -215,7 +215,7 @@
             type: "GET",
             dataType: "JSON",
             success: function(data)
-                {                    
+                {                  
                     $('[name="sch_id"]').val(data.SCH_ID);
                     $('[name="sch_title"]').val(data.SCH_TITLE);                    
                     $('[name="sch_date"]').val(data.SCH_DATE);
@@ -223,11 +223,11 @@
                     $('[name="sch_time"]').val(a);
                     $('[name="sch_info"]').val(data.SCH_INFO);
                     $('[name="sch_loc"]').val(data.SCH_LOC);
-                    $('[name="sch_notulen"]').val(data.SCH_NOTULEN);
+                    CKEDITOR.instances['notulen'].setData(data.SCH_NOTULEN);
                     pick_deptlist(id);
                     pick_memlist(id);
                     pick_team(data.USR_ID);
-                    $('#modal_edit_sch').modal('hide');                    
+                    $('#modal_edit_sch').modal('hide');                  
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {

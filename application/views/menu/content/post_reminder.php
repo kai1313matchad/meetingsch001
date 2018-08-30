@@ -9,7 +9,7 @@
             	<form>
                     <input type="hidden" name="user_id" value="4">
                     <input type="hidden" name="user_group" value="1">
-                    <input type="hidden" name="kar_id" value="71">
+                    <input type="hidden" name="kar_id" value="<?php echo $this->session->userdata('kar_id')?>">
                     <input type="hidden" name="sch_id">
                 </form>
             </div>
